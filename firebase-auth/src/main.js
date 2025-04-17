@@ -118,6 +118,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // Initially render the login form
   renderLoginForm();
 });

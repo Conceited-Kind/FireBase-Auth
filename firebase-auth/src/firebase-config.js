@@ -3,15 +3,16 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAHdUp4RkYQT5GUxXpWv--4O0Qyo48Ps_o",
-    authDomain: "fir-auth-demo-17a54.firebaseapp.com",
-    projectId: "fir-auth-demo-17a54",
-    storageBucket: "fir-auth-demo-17a54.firebasestorage.app",
-    messagingSenderId: "759350269194",
-    appId: "1:759350269194:web:888b1d035044760aa396f3",
-    measurementId: "G-GMZLG6RHGS"
-  };
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+};
   
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

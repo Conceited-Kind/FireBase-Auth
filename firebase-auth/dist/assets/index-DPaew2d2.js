@@ -1470,13 +1470,17 @@
  * limitations under the License.
  */j(So,Co,"app");const Ao={apiKey:"AIzaSyAHdUp4RkYQT5GUxXpWv--4O0Qyo48Ps_o",authDomain:"fir-auth-demo-17a54.firebaseapp.com",projectId:"fir-auth-demo-17a54",storageBucket:"fir-auth-demo-17a54.firebasestorage.app",messagingSenderId:"759350269194",appId:"1:759350269194:web:888b1d035044760aa396f3",measurementId:"G-GMZLG6RHGS"},Ro=Yt(Ao),it=bo(Ro),ko=new E,Po=async(n,e)=>{try{return(await cs(it,n,e)).user}catch(t){throw t}},Oo=async(n,e)=>{try{return(await ls(it,n,e)).user}catch(t){throw t}},Do=async()=>{try{return(await Os(it,ko)).user}catch(n){throw console.error("Google Sign-In Error:",n),n}};document.addEventListener("DOMContentLoaded",()=>{const n=document.getElementById("app"),e=()=>{n.innerHTML=`
       <div id="auth-container">
-        <h1>Login</h1>
+        <h1>Firebase-Auth-Demo</h1> <!-- Updated heading -->
         <form id="signin-form">
           <label for="signin-email">Email Address:</label>
           <input type="email" id="signin-email" placeholder="Enter your email" required />
 
           <label for="signin-password">Password:</label>
           <input type="password" id="signin-password" placeholder="Enter your password" required />
+
+          <label>
+            <input type="checkbox" id="remember-me"> Remember Me
+          </label>
 
           <button type="submit" id="login-btn">Login</button>
         </form>
@@ -1485,6 +1489,7 @@
 
         <p id="auth-status"></p>
         <p>Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
+        <p><a href="#" id="forgot-password">Forgot Password?</a></p>
       </div>
     `;const r=document.getElementById("signin-form"),i=document.getElementById("google-signin"),s=document.getElementById("signup-link"),o=document.getElementById("auth-status");r.addEventListener("submit",async c=>{c.preventDefault();try{const a=document.getElementById("signin-email").value,l=document.getElementById("signin-password").value;await Oo(a,l),o.textContent="You have successfully logged in!",o.style.color="green"}catch(a){o.textContent=`Error: ${a.message}`,o.style.color="red"}}),i.addEventListener("click",async()=>{try{await Do(),o.textContent="You have successfully logged in with Google!",o.style.color="green"}catch(c){o.textContent=`Error: ${c.message}`,o.style.color="red"}}),s.addEventListener("click",c=>{c.preventDefault(),t()})},t=()=>{n.innerHTML=`
       <div id="auth-container">
@@ -1502,4 +1507,4 @@
         <p id="auth-status"></p>
         <p>Already have an account? <a href="#" id="login-link">Login</a></p>
       </div>
-    `;const r=document.getElementById("signup-form"),i=document.getElementById("login-link"),s=document.getElementById("auth-status");r.addEventListener("submit",async o=>{o.preventDefault();try{const c=document.getElementById("signup-email").value,a=document.getElementById("signup-password").value;await Po(c,a),s.textContent="You have successfully signed up!",s.style.color="green"}catch(c){s.textContent=`Error: ${c.message}`,s.style.color="red"}}),i.addEventListener("click",o=>{o.preventDefault(),e()})};e()});
+    `;const r=document.getElementById("signup-form"),i=document.getElementById("login-link"),s=document.getElementById("auth-status");r.addEventListener("submit",async o=>{o.preventDefault();const c=document.getElementById("signup-password").value;if(c.length<6){s.textContent="Password must be at least 6 characters long.",s.style.color="red";return}try{const a=document.getElementById("signup-email").value;await Po(a,c),s.textContent="You have successfully signed up!",s.style.color="green"}catch(a){s.textContent=`Error: ${a.message}`,s.style.color="red"}}),i.addEventListener("click",o=>{o.preventDefault(),e()})};e()});
